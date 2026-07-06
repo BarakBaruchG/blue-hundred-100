@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Blue Hundred — 100 Essential Jazz Recordings</title>
+<meta name="description" content="A ranked portal of the 100 greatest jazz tracks of all time, from 1926 to today. Filter by style, search, and listen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Libre+Franklin:ital,wght@0,300..800;1,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F2EC;
+    --ink:#111013;
+    --ink-soft:#4c4a50;
+    --cobalt:#1D46D4;
+    --cobalt-deep:#122C86;
+    --hot:#E4571F;
+    --line:rgba(17,16,19,.16);
+    --line-strong:rgba(17,16,19,.55);
+    --disc:#15131a;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Libre Franklin',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  ::selection{background:var(--cobalt);color:#fff}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:var(--paper);
+    border-bottom:1px solid var(--line-strong);
+  }
+  .topbar-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;max-width:var(--maxw);margin:0 auto;
+  }
+  .wordmark{
+    font-family:'Archivo',sans-serif;
+    font-weight:900;font-stretch:110%;
+    letter-spacing:.02em;text-transform:uppercase;
+    font-size:15px;
+    display:flex;align-items:center;gap:10px;
+    text-decoration:none;
+  }
+  .wordmark .dot{
+    width:14px;height:14px;border-radius:50%;
+    background:var(--cobalt);flex:none;
+  }
+  .topnav{display:flex;gap:22px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-transform:uppercase;letter-spacing:.06em}
+  .topnav a{text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px}
+  .topnav a:hover{border-color:var(--cobalt);color:var(--cobalt)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    border-bottom:1px solid var(--line-strong);
+    overflow:hidden;
+    position:relative;
+  }
+  .hero-inner{
+    max-width:var(--maxw);margin:0 auto;
+    padding:64px 24px 56px;
+  }
+  .hero .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--cobalt);
+    margin-bottom:18px;
+  }
+  .megatitle{
+    font-family:'Archivo',sans-serif;
+    font-weight:900;font-stretch:120%;
+    text-transform:uppercase;
+    line-height:.86;
+    letter-spacing:-.015em;
+    font-size:clamp(64px,12.5vw,168px);
+    user-select:none;
+  }
+  .megatitle .row2{
+    display:flex;align-items:center;gap:.06em;
+    color:var(--cobalt);
+  }
+  /* the spinning-record zero: the signature element */
+  .vinyl{
+    display:inline-block;flex:none;
+    width:.86em;height:.86em;
+    border-radius:50%;
+    background:
+      radial-gradient(circle at 50% 50%, var(--cobalt) 0 26%, transparent 26.5%),
+      repeating-radial-gradient(circle at 50% 50%, #26232c 0 2.2%, #171420 2.2% 4.4%);
+    background-color:var(--disc);
+    box-shadow:inset 0 0 0 .035em var(--ink);
+    position:relative;
+    animation:spin 6s linear infinite;
+  }
+  .vinyl::after{
+    content:"";position:absolute;inset:0;border-radius:50%;
+    background:radial-gradient(circle at 50% 50%, var(--paper) 0 4%, transparent 4.5%);
+  }
+  .vinyl::before{
+    content:"";position:absolute;left:50%;top:6%;
+    width:8%;height:20%;
+    background:linear-gradient(rgba(255,255,255,.28),rgba(255,255,255,0));
+    transform:translateX(-50%) rotate(18deg);
+    border-radius:40%;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){
+    .vinyl{animation:none}
+    html{scroll-behavior:auto}
+  }
+  .hero-sub{
+    margin-top:30px;
+    display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
+    gap:32px;align-items:end;
+  }
+  .hero-sub p{
+    font-size:clamp(16px,1.6vw,19px);
+    line-height:1.55;max-width:46ch;
+    color:var(--ink-soft);
+  }
+  .hero-sub p b{color:var(--ink);font-weight:700}
+  .hero-stats{
+    display:flex;gap:0;justify-self:end;
+    font-family:'IBM Plex Mono',monospace;
+    border:1px solid var(--line-strong);
+  }
+  .hero-stats div{
+    padding:12px 18px;
+    border-left:1px solid var(--line-strong);
+    text-align:left;min-width:104px;
+  }
+  .hero-stats div:first-child{border-left:none}
+  .hero-stats .n{
+    font-family:'Archivo',sans-serif;font-weight:900;font-stretch:115%;
+    font-size:26px;line-height:1;display:block;
+  }
+  .hero-stats .l{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft)}
+
+  /* ---------- controls ---------- */
+  .controls{
+    position:sticky;top:53px;z-index:40;
+    background:var(--paper);
+    border-bottom:1px solid var(--line-strong);
+  }
+  .controls-inner{
+    max-width:var(--maxw);margin:0 auto;
+    padding:14px 24px;
+    display:flex;flex-wrap:wrap;gap:12px;align-items:center;
+  }
+  .search{
+    flex:1 1 240px;max-width:340px;
+    display:flex;align-items:center;gap:8px;
+    border:1px solid var(--line-strong);
+    padding:9px 12px;background:#fff;
+  }
+  .search svg{flex:none;opacity:.6}
+  .search input{
+    border:none;outline:none;background:none;
+    font:inherit;width:100%;
+    font-size:14.5px;
+  }
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;letter-spacing:.04em;text-transform:uppercase;
+    border:1px solid var(--line-strong);
+    background:transparent;color:var(--ink);
+    padding:7px 12px;cursor:pointer;
+    transition:background .12s,color .12s;
+  }
+  .chip:hover{background:rgba(29,70,212,.08)}
+  .chip[aria-pressed="true"]{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
+  .chip:focus-visible,.search input:focus-visible,a:focus-visible,button:focus-visible{
+    outline:2px solid var(--cobalt);outline-offset:2px;
+  }
+  .count{
+    margin-left:auto;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--ink-soft);white-space:nowrap;
+  }
+  .count b{color:var(--cobalt)}
+
+  /* ---------- list ---------- */
+  .list{max-width:var(--maxw);margin:0 auto;padding:8px 24px 40px}
+  .track{
+    display:grid;
+    grid-template-columns:96px minmax(0,1fr) 170px 120px 216px;
+    gap:20px;align-items:baseline;
+    padding:18px 4px 16px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  .track::after{
+    content:"";position:absolute;left:0;bottom:-1px;height:2px;width:0;
+    background:var(--cobalt);transition:width .22s ease;
+  }
+  .track:hover::after{width:100%}
+  .rank{
+    font-family:'Archivo',sans-serif;
+    font-weight:900;font-stretch:120%;
+    font-size:34px;line-height:1;
+    letter-spacing:-.02em;
+    color:var(--ink);
+    font-variant-numeric:tabular-nums;
+  }
+  .track:hover .rank{color:var(--cobalt)}
+  .track.top .rank{color:var(--cobalt)}
+  .track.top .rank::after{
+    content:"★";
+    font-size:12px;color:var(--hot);
+    vertical-align:super;margin-left:4px;
+  }
+  .tt{min-width:0}
+  .title{
+    font-family:'Archivo',sans-serif;
+    font-weight:800;font-stretch:108%;
+    font-size:19px;line-height:1.15;
+    text-transform:uppercase;letter-spacing:.005em;
+  }
+  .artist{
+    font-size:14.5px;color:var(--ink-soft);
+    margin-top:3px;
+  }
+  .note{
+    font-size:13.5px;font-style:italic;color:var(--cobalt-deep);
+    margin-top:6px;max-width:52ch;
+  }
+  .album{
+    font-size:13px;color:var(--ink-soft);
+    line-height:1.35;
+  }
+  .album .yr{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;color:var(--ink);display:block;margin-top:2px;
+  }
+  .style{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .listen-group{
+    justify-self:end;
+    display:flex;gap:6px;align-items:center;
+  }
+  .listen{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;letter-spacing:.05em;text-transform:uppercase;
+    text-decoration:none;
+    border:1px solid var(--line-strong);
+    padding:7px 12px;white-space:nowrap;
+    transition:background .12s,color .12s,border-color .12s;
+  }
+  .listen:hover{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
+  .listen.sp{display:inline-flex;align-items:center;gap:6px}
+  .listen.sp:hover{background:#1DB954;border-color:#1DB954;color:#fff}
+  .empty{
+    padding:56px 4px;text-align:center;color:var(--ink-soft);
+    font-size:15px;display:none;
+  }
+  .empty b{color:var(--ink)}
+  .empty button{
+    margin-top:14px;display:inline-block;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;text-transform:uppercase;
+    letter-spacing:.05em;border:1px solid var(--line-strong);
+    background:none;padding:8px 14px;cursor:pointer;
+  }
+  .empty button:hover{background:var(--cobalt);color:#fff;border-color:var(--cobalt)}
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--line-strong);
+    background:var(--ink);color:var(--paper);
+  }
+  .foot-inner{
+    max-width:var(--maxw);margin:0 auto;
+    padding:40px 24px;
+    display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:baseline;
+  }
+  .foot-inner .fm{
+    font-family:'Archivo',sans-serif;font-weight:900;font-stretch:115%;
+    text-transform:uppercase;font-size:20px;letter-spacing:.01em;
+  }
+  .foot-inner .fm span{color:#6E8CFF}
+  .foot-inner p{
+    font-size:13px;color:rgba(242,242,236,.65);max-width:52ch;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .track{grid-template-columns:64px minmax(0,1fr) 216px;gap:14px}
+    .album{display:none}
+    .rank{font-size:26px}
+    .hero-sub{grid-template-columns:1fr}
+    .hero-stats{justify-self:start}
+  }
+  @media (max-width:600px){
+    .topnav{display:none}
+    .controls{top:49px}
+    .track{grid-template-columns:48px minmax(0,1fr);row-gap:8px}
+    .style{display:none}
+    .listen-group{grid-column:2;justify-self:start;margin-top:2px}
+    .title{font-size:16.5px}
+    .rank{font-size:22px}
+    .hero-inner{padding:44px 24px 40px}
+    .hero-stats div{min-width:0;padding:10px 12px}
+    .count{margin-left:0;width:100%}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="wordmark" href="#top"><span class="dot" aria-hidden="true"></span>The Blue Hundred</a>
+    <nav class="topnav" aria-label="Sections">
+      <a href="#list">The List</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <p class="eyebrow">1926 — Today · A Ranked Canon</p>
+    <h1 class="megatitle">
+      <span>The Jazz</span>
+      <span class="row2">1<span class="vinyl" role="img" aria-label="spinning vinyl record standing in for a zero"></span>0</span>
+    </h1>
+    <div class="hero-sub">
+      <p id="about">One hundred recordings that built the music — from <b>hot New Orleans sides</b> cut in 1926 to <b>modern epics</b>, ranked and mapped across thirteen styles. Filter by school, search a name, and press play.</p>
+      <div class="hero-stats" role="group" aria-label="Collection statistics">
+        <div><span class="n">100</span><span class="l">Tracks</span></div>
+        <div><span class="n" id="statYears">91</span><span class="l">Years</span></div>
+        <div><span class="n" id="statStyles">13</span><span class="l">Styles</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="controls" aria-label="Filters">
+  <div class="controls-inner">
+    <label class="search">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+      <input id="q" type="search" placeholder="Search title, artist, album…" aria-label="Search tracks">
+    </label>
+    <div class="chips" id="chips" role="group" aria-label="Filter by style"></div>
+    <span class="count" id="count">Showing <b>100</b> of 100</span>
+  </div>
+</section>
+
+<main class="list" id="list">
+  <div id="rows"></div>
+  <div class="empty" id="empty">
+    No tracks match <b id="emptyq"></b>.
+    <br><button id="reset">Clear filters</button>
+  </div>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <div class="fm">The Blue <span>Hundred</span></div>
+    <p>A listening map, not a verdict. Rankings blend historical weight, influence, and the simple test of whether a record still stops the room. Listen links open a search on YouTube.</p>
+  </div>
+</footer>
+
+<script>
+const TRACKS=[
+[1,"So What","Miles Davis","Kind of Blue",1959,"Modal","Two chords, infinite space — the modal blueprint."],
+[2,"Take Five","The Dave Brubeck Quartet","Time Out",1959,"Cool","Odd meter made a pop hit out of the avant-garde."],
+[3,"A Love Supreme, Pt. I: Acknowledgement","John Coltrane","A Love Supreme",1965,"Avant & Spiritual","A four-note bass line that becomes a prayer."],
+[4,"Strange Fruit","Billie Holiday","Single (Commodore)",1939,"Vocal","Protest as art — the song that stopped rooms cold."],
+[5,"Giant Steps","John Coltrane","Giant Steps",1960,"Hard Bop","The chord cycle every saxophonist still measures against."],
+[6,"'Round Midnight","Thelonious Monk","Genius of Modern Music, Vol. 1",1947,"Bebop","Jazz's most-recorded original: angular, tender, inevitable."],
+[7,"West End Blues","Louis Armstrong & His Hot Five","Single (OKeh)",1928,"Early Jazz","The opening cadenza that invented the jazz solo."],
+[8,"Take the \"A\" Train","Duke Ellington","Single (Victor)",1941,"Swing","Strayhorn's subway ride became Ellington's signature."],
+[9,"Ko-Ko","Charlie Parker's Re-Boppers","Single (Savoy)",1945,"Bebop","Bebop's big bang, at a tempo nobody could follow."],
+[10,"My Favorite Things","John Coltrane","My Favorite Things",1961,"Modal","A Broadway waltz remade as hypnosis on soprano sax."],
+[11,"Sing, Sing, Sing","Benny Goodman","Single (Victor)",1937,"Swing"],
+[12,"Body and Soul","Coleman Hawkins","Single (Bluebird)",1939,"Swing"],
+[13,"The Girl from Ipanema","Stan Getz & João Gilberto","Getz/Gilberto",1964,"Latin"],
+[14,"Moanin'","Art Blakey & The Jazz Messengers","Moanin'",1959,"Hard Bop"],
+[15,"Lonely Woman","Ornette Coleman","The Shape of Jazz to Come",1959,"Avant & Spiritual"],
+[16,"Goodbye Pork Pie Hat","Charles Mingus","Mingus Ah Um",1959,"Post-Bop"],
+[17,"Blue in Green","Miles Davis","Kind of Blue",1959,"Modal"],
+[18,"St. Thomas","Sonny Rollins","Saxophone Colossus",1956,"Hard Bop"],
+[19,"A Night in Tunisia","Dizzy Gillespie","Single (Victor)",1946,"Bebop"],
+[20,"Summertime","Ella Fitzgerald & Louis Armstrong","Porgy and Bess",1958,"Vocal"],
+[21,"What a Wonderful World","Louis Armstrong","Single (ABC)",1967,"Vocal"],
+[22,"Maiden Voyage","Herbie Hancock","Maiden Voyage",1965,"Post-Bop"],
+[23,"Waltz for Debby","Bill Evans Trio","Waltz for Debby",1961,"Cool"],
+[24,"Blue Train","John Coltrane","Blue Train",1958,"Hard Bop"],
+[25,"God Bless the Child","Billie Holiday","Single (OKeh)",1941,"Vocal"],
+[26,"Mood Indigo","Duke Ellington","Single (Brunswick)",1930,"Swing"],
+[27,"The Sidewinder","Lee Morgan","The Sidewinder",1964,"Soul Jazz"],
+[28,"Song for My Father","Horace Silver","Song for My Father",1965,"Hard Bop"],
+[29,"Cantaloupe Island","Herbie Hancock","Empyrean Isles",1964,"Soul Jazz"],
+[30,"Naima","John Coltrane","Giant Steps",1960,"Modal"],
+[31,"Feeling Good","Nina Simone","I Put a Spell on You",1965,"Vocal"],
+[32,"In a Sentimental Mood","Duke Ellington & John Coltrane","Duke Ellington & John Coltrane",1963,"Post-Bop"],
+[33,"All Blues","Miles Davis","Kind of Blue",1959,"Modal"],
+[34,"Watermelon Man","Herbie Hancock","Takin' Off",1962,"Soul Jazz"],
+[35,"Birdland","Weather Report","Heavy Weather",1977,"Fusion"],
+[36,"Chameleon","Herbie Hancock","Head Hunters",1973,"Fusion"],
+[37,"Autumn Leaves","Cannonball Adderley","Somethin' Else",1958,"Hard Bop"],
+[38,"Mack the Knife","Ella Fitzgerald","Ella in Berlin",1960,"Vocal"],
+[39,"Desafinado","Stan Getz & Charlie Byrd","Jazz Samba",1962,"Latin"],
+[40,"Alabama","John Coltrane","Live at Birdland",1963,"Modal"],
+[41,"Milestones","Miles Davis","Milestones",1958,"Hard Bop"],
+[42,"Fables of Faubus","Charles Mingus","Mingus Ah Um",1959,"Post-Bop"],
+[43,"Lush Life","John Coltrane & Johnny Hartman","John Coltrane and Johnny Hartman",1963,"Vocal"],
+[44,"Caravan","Duke Ellington","Single (Master)",1937,"Swing"],
+[45,"It Don't Mean a Thing (If It Ain't Got That Swing)","Duke Ellington","Single (Brunswick)",1932,"Swing"],
+[46,"Minnie the Moocher","Cab Calloway","Single (Brunswick)",1931,"Swing"],
+[47,"In the Mood","Glenn Miller","Single (Bluebird)",1939,"Swing"],
+[48,"Begin the Beguine","Artie Shaw","Single (Bluebird)",1938,"Swing"],
+[49,"One O'Clock Jump","Count Basie","Single (Decca)",1937,"Swing"],
+[50,"Lester Leaps In","Count Basie's Kansas City Seven","Single (Vocalion)",1939,"Swing"],
+[51,"Now's the Time","Charlie Parker","Single (Savoy)",1945,"Bebop"],
+[52,"Ornithology","Charlie Parker","Single (Dial)",1946,"Bebop"],
+[53,"Parker's Mood","Charlie Parker","Single (Savoy)",1948,"Bebop"],
+[54,"Un Poco Loco","Bud Powell","The Amazing Bud Powell, Vol. 1",1951,"Bebop"],
+[55,"Straight, No Chaser","Thelonious Monk","Genius of Modern Music, Vol. 2",1951,"Bebop"],
+[56,"Blue Monk","Thelonious Monk","Thelonious Monk Trio",1954,"Bebop"],
+[57,"Brilliant Corners","Thelonious Monk","Brilliant Corners",1957,"Post-Bop"],
+[58,"Manteca","Dizzy Gillespie","Single (Victor)",1947,"Latin"],
+[59,"Cherokee","Clifford Brown & Max Roach","Study in Brown",1955,"Hard Bop"],
+[60,"Walkin'","Miles Davis","Walkin'",1954,"Hard Bop"],
+[61,"Django","The Modern Jazz Quartet","Django",1954,"Cool"],
+[62,"Misty","Erroll Garner","Contrasts",1954,"Cool"],
+[63,"Poinciana","Ahmad Jamal Trio","At the Pershing: But Not for Me",1958,"Cool"],
+[64,"Peace Piece","Bill Evans","Everybody Digs Bill Evans",1959,"Cool"],
+[65,"Blue Rondo à la Turk","The Dave Brubeck Quartet","Time Out",1959,"Cool"],
+[66,"Someday My Prince Will Come","Miles Davis","Someday My Prince Will Come",1961,"Modal"],
+[67,"Four on Six","Wes Montgomery","The Incredible Jazz Guitar",1960,"Hard Bop"],
+[68,"Speak No Evil","Wayne Shorter","Speak No Evil",1966,"Post-Bop"],
+[69,"Footprints","Wayne Shorter","Adam's Apple",1967,"Post-Bop"],
+[70,"Cristo Redentor","Donald Byrd","A New Perspective",1963,"Hard Bop"],
+[71,"Idle Moments","Grant Green","Idle Moments",1965,"Soul Jazz"],
+[72,"The \"In\" Crowd","The Ramsey Lewis Trio","The In Crowd",1965,"Soul Jazz"],
+[73,"Mercy, Mercy, Mercy","Cannonball Adderley","Mercy, Mercy, Mercy! Live at 'The Club'",1966,"Soul Jazz"],
+[74,"Compared to What","Les McCann & Eddie Harris","Swiss Movement",1969,"Soul Jazz"],
+[75,"Mister Magic","Grover Washington Jr.","Mister Magic",1975,"Soul Jazz"],
+[76,"Sinnerman","Nina Simone","Pastel Blues",1965,"Vocal"],
+[77,"Fly Me to the Moon","Frank Sinatra with Count Basie","It Might as Well Be Swing",1964,"Vocal"],
+[78,"Soul Bossa Nova","Quincy Jones","Big Band Bossa Nova",1962,"Latin"],
+[79,"Blue Bossa","Joe Henderson","Page One",1963,"Latin"],
+[80,"Afro Blue","Mongo Santamaría","Mongo",1959,"Latin"],
+[81,"Wave","Antônio Carlos Jobim","Wave",1967,"Latin"],
+[82,"Ghosts: First Variation","Albert Ayler","Spiritual Unity",1964,"Avant & Spiritual"],
+[83,"The Creator Has a Master Plan","Pharoah Sanders","Karma",1969,"Avant & Spiritual"],
+[84,"Journey in Satchidananda","Alice Coltrane","Journey in Satchidananda",1971,"Avant & Spiritual"],
+[85,"Bitches Brew","Miles Davis","Bitches Brew",1970,"Fusion"],
+[86,"Red Clay","Freddie Hubbard","Red Clay",1970,"Fusion"],
+[87,"Spain","Return to Forever","Light as a Feather",1972,"Fusion"],
+[88,"Breezin'","George Benson","Breezin'",1976,"Fusion"],
+[89,"Portrait of Tracy","Jaco Pastorius","Jaco Pastorius",1976,"Fusion"],
+[90,"Rockit","Herbie Hancock","Future Shock",1983,"Fusion"],
+[91,"Tutu","Miles Davis","Tutu",1986,"Fusion"],
+[92,"Cantaloop (Flip Fantasia)","Us3","Hand on the Torch",1993,"Modern"],
+[93,"Strasbourg / St. Denis","The Roy Hargrove Quintet","Earfood",2008,"Modern"],
+[94,"Lingus","Snarky Puppy","We Like It Here",2014,"Modern"],
+[95,"Truth","Kamasi Washington","Harmony of Difference",2017,"Modern"],
+[96,"Black Bottom Stomp","Jelly Roll Morton's Red Hot Peppers","Single (Victor)",1926,"Early Jazz"],
+[97,"Singin' the Blues","Frankie Trumbauer & Bix Beiderbecke","Single (OKeh)",1927,"Early Jazz"],
+[98,"Potato Head Blues","Louis Armstrong & His Hot Seven","Single (OKeh)",1927,"Early Jazz"],
+[99,"Ain't Misbehavin'","Fats Waller","Single (Victor)",1929,"Early Jazz"],
+[100,"Linus and Lucy","Vince Guaraldi Trio","Jazz Impressions of a Boy Named Charlie Brown",1964,"Cool"]
+];
+
+const STYLE_ORDER=["Early Jazz","Swing","Vocal","Bebop","Cool","Hard Bop","Modal","Post-Bop","Latin","Soul Jazz","Avant & Spiritual","Fusion","Modern"];
+
+const rowsEl=document.getElementById('rows');
+const chipsEl=document.getElementById('chips');
+const qEl=document.getElementById('q');
+const countEl=document.getElementById('count');
+const emptyEl=document.getElementById('empty');
+const emptyQ=document.getElementById('emptyq');
+
+let activeStyle=null;
+
+// stats
+const years=TRACKS.map(t=>t[4]);
+document.getElementById('statYears').textContent=Math.max(...years)-Math.min(...years);
+document.getElementById('statStyles').textContent=STYLE_ORDER.length;
+
+// build chips
+const allChip=document.createElement('button');
+allChip.className='chip';allChip.textContent='All';
+allChip.setAttribute('aria-pressed','true');
+allChip.onclick=()=>{activeStyle=null;syncChips();render();};
+chipsEl.appendChild(allChip);
+STYLE_ORDER.forEach(s=>{
+  const b=document.createElement('button');
+  b.className='chip';b.textContent=s;b.dataset.style=s;
+  b.setAttribute('aria-pressed','false');
+  b.onclick=()=>{activeStyle=(activeStyle===s?null:s);syncChips();render();};
+  chipsEl.appendChild(b);
+});
+function syncChips(){
+  allChip.setAttribute('aria-pressed',String(activeStyle===null));
+  chipsEl.querySelectorAll('[data-style]').forEach(b=>{
+    b.setAttribute('aria-pressed',String(b.dataset.style===activeStyle));
+  });
+}
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function ytLink(t){
+  return 'https://www.youtube.com/results?search_query='+encodeURIComponent(t[2]+' '+t[1]);
+}
+function spLink(t){
+  return 'https://open.spotify.com/search/'+encodeURIComponent(t[2]+' '+t[1]);
+}
+
+function render(){
+  const q=qEl.value.trim().toLowerCase();
+  const shown=TRACKS.filter(t=>{
+    if(activeStyle && t[5]!==activeStyle)return false;
+    if(q){
+      const hay=(t[1]+' '+t[2]+' '+t[3]+' '+t[4]+' '+t[5]).toLowerCase();
+      if(!hay.includes(q))return false;
+    }
+    return true;
+  });
+  rowsEl.innerHTML=shown.map(t=>{
+    const[rank,title,artist,album,year,style,note]=t;
+    return `<article class="track${rank<=10?' top':''}">
+      <div class="rank">${String(rank).padStart(2,'0')}</div>
+      <div class="tt">
+        <h2 class="title">${esc(title)}</h2>
+        <p class="artist">${esc(artist)}</p>
+        ${note?`<p class="note">${esc(note)}</p>`:''}
+      </div>
+      <div class="album">${esc(album)}<span class="yr">${year}</span></div>
+      <div class="style">${esc(style)}</div>
+      <div class="listen-group">
+        <a class="listen sp" href="${spLink(t)}" target="_blank" rel="noopener" aria-label="Listen to ${esc(title)} on Spotify"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.5 17.3c-.2.4-.7.5-1 .3-2.9-1.8-6.5-2.2-10.8-1.2-.4.1-.8-.2-.9-.6-.1-.4.2-.8.6-.9 4.7-1.1 8.7-.6 11.9 1.4.3.2.4.7.2 1zm1.5-3.3c-.3.4-.8.6-1.3.3-3.3-2-8.3-2.6-12.2-1.4-.5.1-1-.1-1.2-.6-.1-.5.1-1 .6-1.2 4.4-1.3 9.9-.7 13.7 1.6.5.3.6.9.4 1.3zm.1-3.4C15.2 8.3 8.7 8.1 5 9.2c-.6.2-1.2-.2-1.4-.7-.2-.6.2-1.2.7-1.4 4.3-1.3 11.4-1 15.9 1.6.5.3.7 1 .4 1.5-.3.5-1 .7-1.5.4z"/></svg>Spotify</a>
+        <a class="listen" href="${ytLink(t)}" target="_blank" rel="noopener" aria-label="Search ${esc(title)} on YouTube">YouTube&nbsp;↗</a>
+      </div>
+    </article>`;
+  }).join('');
+  countEl.innerHTML=`Showing <b>${shown.length}</b> of 100`;
+  const none=shown.length===0;
+  emptyEl.style.display=none?'block':'none';
+  if(none)emptyQ.textContent=q?`“${qEl.value.trim()}”`:'these filters';
+}
+
+qEl.addEventListener('input',render);
+document.getElementById('reset').onclick=()=>{qEl.value='';activeStyle=null;syncChips();render();};
+render();
+</script>
+</body>
+</html>
